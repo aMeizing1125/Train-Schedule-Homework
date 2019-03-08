@@ -1,0 +1,46 @@
+body {
+  background-image: url("../assets/image/background2.jpg");
+  opacity: .7;
+  background-position: center; 
+  background-repeat: no-repeat, repeat; 
+  background-size: cover;
+
+}
+
+
+/* Banner */
+.banner {
+
+}
+.jumbotron {
+  text-align: center;
+
+}
+h1 {
+
+}
+.currentTrainSchedule {
+
+}
+table {
+  border-radius: 25px;
+  width: 90%;
+  margin: 10px;
+  
+}
+
+/* bootstrap .thead-dark */
+thead {
+  
+}
+
+/* bootstrap .col */
+th {
+  
+}
+
+/* tbody */
+#addTrainsHere {
+background-image: url("../assets/images/background.jpg");
+
+}
