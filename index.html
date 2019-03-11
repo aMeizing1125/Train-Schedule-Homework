@@ -19,21 +19,22 @@
 
 <body>
   <div class="theBody">
-    <div class="container">
-      <div class="banner bg-info text-white">
+    <div class="container" id="container">
+      <div class="banner bg-primary text-white border border-danger rounded p-3 ">
         <h1 class="text-center bannerHeading">ALL ABOARD BITCHES!</h1>
-        <h3 class="text-center">Train Scheduler Homework</h3>
+        <h3 class="text-center">Party Bus Time!</h3>
       </div>
+      <br>
 
       <div class="row">
         <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
           <!-- Current Trains -->
-          <div class="panel panel-primary infoPanel">
-            <div class="panel-heading">
-              <h3 class="panel-title text-danger"><strong>Current Train</strong></h3>
+          <div class="panel panel-primary infoPanel  border border-danger rounded p-3">
+            <div class="panel-heading border  rounded  border bg-light">
+              <h3 class="panel-title text-white p-2 bg-primary text-center">Current Train</h3>
             </div>
-            <div class="panel-body">
+            <div class=" panel-body ">
               <table class="table table-hover" id="trainTable">
                 <thead>
                   <tr>
@@ -57,37 +58,45 @@
               </table>
             </div>
           </div>
+          <br>
 
           <!-- add new trains here and load them all from firebase not just the most recent one -->
-          <div class="panel panel-primary enterDataPanel">
-            <div class="panel-heading">
-              <h3 class="panel-title text-danger"><strong>Add New Train Here</strong></h3>
+          <div class="enterDataPanel panel panel-primary enterDataPanel border border-danger rounded p-3 "
+            id="addTrainHere">
+            <div class="panel-heading ">
+              <h3 class="panel-title text-white border pl-5 bg-primary text-center ">Add New Train Here</h3>
             </div>
 
-            <div class="panel-body">
+            <div class="panel-body ">
               <!-- Form -->
               <form>
                 <div class="form-group">
-                  <label for="">Train Name: </label>
+                  <label class="text-danger font-weight-bolder pl-5 " for="">Train Name: </label>
+
                   <input type="text" class="form-control" id="newTrain" required>
                 </div>
 
                 <div class="form-group">
-                  <label for="">Destination: </label>
+                  <label class="text-danger font-weight-bolder pl-5" for="">Destination: </label>
                   <input type="text" class="form-control" id="newDestination" required>
                 </div>
 
                 <div class="form-group">
-                  <label for="">First Train Time (HH:mm - military time): </label>
+                  <label class="text-danger font-weight-bolder pl-5" for="">First Train Time (HH:mm - military time):
+                  </label>
                   <input type="text" class="form-control" id="firstArrival" required>
                 </div>
 
                 <div class="form-group">
-                  <label for="">Frequency (min): </label>
+                  <label class="text-danger font-weight-bolder pl-5" for="">Frequency (min): </label>
                   <input type="text" class="form-control" id="newFrequency" required>
                 </div>
-
-                <button type="submit" class="btn btn-primary center" id="submit">Submit</button>
+                <div class="center-block">
+                  <button type="submit" class="btn btn-primary center-block col-lg-12 col-md-12 col-sm-12 col-12 p-3"
+                    id="submit">Submit</button>
+                  <!-- Story behind the picture. Best friend wedding and I was the maid of honor, of course. 
+                  We were taking the party train to the reception from the wedding, and some guy cut us off while I was dancing. Luckily Cam and Dom were able to catch me! :) so fun   -->
+                </div>
               </form>
             </div>
           </div>

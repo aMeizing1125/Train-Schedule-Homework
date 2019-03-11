@@ -20,6 +20,8 @@ $('#submit').on("click", function (event) {
   var newFrequency = $('#newFrequency').val().trim();
   //help with tutor Number.isInteger()
 
+
+
   var workingArrival = parseInt(newFirstArrival.replace(":", "")); //it returns it as a string"" and we need to change to a number so boolean can verify
   var workingFrequency = parseInt(newFrequency);
   var hasData = (newTrain.length && newDestination.length && newFirstArrival.length && newFrequency.length) ? true : false;
@@ -42,7 +44,7 @@ $('#submit').on("click", function (event) {
   } else {
     alert("silly rabbit ... fill it out correctly.")
   }
-
+  return false; //prevents page from refreshing. You do not want to know how long it took me to remember/find this.. facepalm
 })
 
 database.ref().on('value', function (snapshot) {
@@ -64,7 +66,7 @@ database.ref().on('value', function (snapshot) {
     var mins;
     var timeArray;
     var timeCheck;
-  
+
     //manipulate time vairables
     timeArray = tFirstArrival.split(":");
     hrs = timeArray[0];
@@ -73,28 +75,53 @@ database.ref().on('value', function (snapshot) {
     timeCheck = moment().max(moment(), trainTime);// store which is greater. 
     console.log(timeCheck);
     //compare first arrival to current time
-    if(trainTime === timeCheck) {
+    if (trainTime === timeCheck) {
       // what this means is the timeCheck, which is the greater of the 2
       //current time and trainTime,  is equal to the traintime meaning it is the next arrival time. 
       //it means the next arrival time is the first arrival time
       nextArrival = trainTime.format("hh:mm A");// hh:mm A is just the format how we want it to return
       minutesRemaining = trainTime.diff(moment(), "minutes") //want to return it in minutes which is a string
 
-      
+
     }
     //do calculation to find next train if first train has already come
 
 
     //append to page
     // replace the last 2 <td>${t}</td>
+    //add classes  class="text-white font-weight-bolder " to the new <td> as well to keep uniform look
+    // tutor recommended this method. 
     var html = `<tr>
   
       <td>${tTrainName}</td>
       <td>${tDestination}</td>
       <td>${tFrequency}</td>
       <td>${nextArrival}</td>
-      <td>${minutesRemaining}</td> 
+      <td >${minutesRemaining}</td> 
       </tr>`
     $('#addHere').append(html)
   })
 })
+//from class lecture recent-all-users-solved.html
+// dataRef.ref().on("child_added",function(childSnapshot){
+// log everything that's coming out of snapshot
+// console.log(childSnapshot).val().name);
+// console.log(childSnapshot).val().email);
+// console.log(childSnapshot).val().age);
+// console.log(childSnapshot).val().comment);
+// console.log(childSnapshot).val().joinDate);
+// }), function(errorObject) {
+// console.log("errors handled: " + errorObject.code);
+// }
+
+//the dots means chaining!
+// DataTransfer.ref()
+// .orderByChild("dateAdded")
+// // .limitToLast(1)
+// .on("child_added", funciton(){
+    // $("#name-display").text(snapshot.val().name);
+    // $("#name-display").text(snapshot.val().email);
+    // $("#name-display").text(snapshot.val().age);
+    // $("#name-display").text(snapshot.val().comment);
+
+// })

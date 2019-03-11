@@ -7,6 +7,9 @@ body {
 
 }
 
+input {
+  opacity: .7;
+}
 
 /* Banner */
 .banner {
@@ -40,7 +43,11 @@ th {
 }
 
 /* tbody */
-#addTrainsHere {
+#addTrainHere {
+background-image: url("../images/Sarah & Fry 2018 Party Bus fell over.jpg");
+background-position: center;
+opacity: 0.9;
+background-size: cover;
 
 
 }
