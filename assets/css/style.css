@@ -1,5 +1,5 @@
 body {
-  background-image: url("../assets/image/background2.jpg");
+
   opacity: .7;
   background-position: center; 
   background-repeat: no-repeat, repeat; 
@@ -41,6 +41,6 @@ th {
 
 /* tbody */
 #addTrainsHere {
-background-image: url("../assets/images/background.jpg");
+
 
 }
