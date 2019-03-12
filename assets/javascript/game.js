@@ -7,10 +7,11 @@ var config = {
   messagingSenderId: "841752497324"
 };
 
+
 firebase.initializeApp(config);
 
 var database = firebase.database();
-
+// alert ("test everything");
 $('#submit').on("click", function (event) {
   event.preventDefault(); //prevents hitting Enter and it going through. 
 
@@ -34,7 +35,6 @@ $('#submit').on("click", function (event) {
       newDestination: newDestination,
       newFirstArrival: newFirstArrival,
       newFrequency: newFrequency
-
     })
 
     $('#newTrain').val("");
@@ -45,20 +45,21 @@ $('#submit').on("click", function (event) {
     alert("silly rabbit ... fill it out correctly.")
   }
   return false; //prevents page from refreshing. You do not want to know how long it took me to remember/find this.. facepalm
-})
+});
+
 
 database.ref().on('value', function (snapshot) {
-  $('#addHere').empty();
+  $('#tableBody').empty();
 
   snapshot.forEach(function (thisTrain) {
-    // console.log(thisTrain);
+    console.log(thisTrain.val());
     // var tRow = $('<tr>');
     //define variable from firebase
     var tTrainName = thisTrain.val().newTrain;
     var tDestination = thisTrain.val().newDestination;
     var tFirstArrival = thisTrain.val().newFirstArrival;
     var tFrequency = thisTrain.val().newFrequency;
-    var t = "word";
+    // var t = "word";
     var trainTime;
     var nextArrival;
     var minutesRemaining;
@@ -81,25 +82,34 @@ database.ref().on('value', function (snapshot) {
       //it means the next arrival time is the first arrival time
       nextArrival = trainTime.format("hh:mm A");// hh:mm A is just the format how we want it to return
       minutesRemaining = trainTime.diff(moment(), "minutes") //want to return it in minutes which is a string
-
-
     }
+
+    newRow = $("<tr>");
+    thisTrainName = $("<td>").text(tTrainName);
+    thisTrainDestination = $("<td>").text(tDestination);
+    thisTrainFrequency = $("<td>").text(tFrequency);
+    thisFirstArrival = $("<td>").text(tFirstArrival);
+    thisNextTrainArrival = $('<td>').text(nextArrival);
+    thisMinutesRemaining = $('<td>').text(minutesRemaining);
+
+    newRow.append(thisTrainName, thisTrainDestination, thisTrainFrequency, thisNextTrainArrival, thisMinutesRemaining);
+
+    $("#tableBody").append(newRow);
+
     //do calculation to find next train if first train has already come
-
-
     //append to page
     // replace the last 2 <td>${t}</td>
     //add classes  class="text-white font-weight-bolder " to the new <td> as well to keep uniform look
     // tutor recommended this method. 
-    var html = `<tr>
+    // var html = `<tr>
   
-      <td>${tTrainName}</td>
-      <td>${tDestination}</td>
-      <td>${tFrequency}</td>
-      <td>${nextArrival}</td>
-      <td >${minutesRemaining}</td> 
-      </tr>`
-    $('#addHere').append(html)
+    //   <td>${tTrainName}</td>
+    //   <td>${tDestination}</td>
+    //   <td>${tFrequency}</td>
+    //   <td>${nextArrival}</td>
+    //   <td >${minutesRemaining}</td> 
+    //   </tr>`
+    // $('#addHere').append(html)
   })
 })
 //from class lecture recent-all-users-solved.html
