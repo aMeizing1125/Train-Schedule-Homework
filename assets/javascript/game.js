@@ -82,6 +82,9 @@ database.ref().on('value', function (snapshot) {
       //it means the next arrival time is the first arrival time
       nextArrival = trainTime.format("hh:mm A");// hh:mm A is just the format how we want it to return
       minutesRemaining = trainTime.diff(moment(), "minutes") //want to return it in minutes which is a string
+    } else {
+      //figure the math
+      nextArrival 
     }
 
     newRow = $("<tr>");
